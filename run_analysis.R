@@ -68,7 +68,6 @@ all$activity <- factor(all$activity, levels = 1:6, labels = activities)
 ###############################################################################
 ## Step 5:  Create and independent tidy dataset with averages.
 ###############################################################################
-str(all)
 tidyset <- group_by(all,subject,activity)
 tidyset <- summarize_each(tidyset, funs(mean))
 # One more thing, per Leek's suggestion that thing should be factors:
@@ -78,4 +77,3 @@ write.table(tidyset, "tidy_averages.txt", row.names = FALSE, quote = FALSE)
 # We use the quote = FALSE parameter only after checking that none of our 
 # variables have spaces in their names, which they do not.
 write.table(names(tidyset), "tidy_names.txt", row.names = FALSE, quote = FALSE)
-str(tidyset)
